@@ -1,7 +1,7 @@
 # SIFTER
-A pipeline for large-scale phylogeny-based protein function prediction using SIFTER (Statistical Inference of Function Through Evolutionary Relationships)
+###A pipeline for large-scale phylogeny-based protein function prediction using SIFTER (Statistical Inference of Function Through Evolutionary Relationships)
 
-========================================================================
+
 
 SIFTER is a statistical approach to predicting protein function 
 that uses a protein family's phylogenetic tree, as the natural structure 
@@ -37,9 +37,8 @@ Other previous developers:
   Philip Johnson, Steven R. Chan, Micheal Souza
 
 
-========================================================================
 ##Download Package
-========================================================================
+
 
     mkdir sifter_large_scale
     cd sifter_large_scale
@@ -51,9 +50,8 @@ Other previous developers:
     tar -xzvf data.tar.gz
     tar -xzvf lib.tar.gz
 
-========================================================================
+
 ##Scripts:
-========================================================================
 
     sifter_find_families.py             Finds Pfam families for your 
                                         query protein or species.
@@ -92,9 +90,9 @@ Other previous developers:
                                         based on latest releases of 
                                         Pfam and GOA databases.
 
-========================================================================
+
 ##Requirments:
-========================================================================
+
 1-Install necessary Prerequisite packages:
 
     sudo apt-get update
@@ -113,7 +111,7 @@ Other previous developers:
 TO BE ABLE TO RUN ON NEW GENOMES (which don't exist in Pfam current release):
 
 2-Install PfamScan source code and data
-    #Documentation at: https://wiki.gacrc.uga.edu/wiki/Pfam_scan
+    (Documentation at: https://wiki.gacrc.uga.edu/wiki/Pfam_scan)
 
     wget ftp://ftp.sanger.ac.uk/pub/databases/Pfam/Tools/PfamScan.tar.gz
     tar -zxvf PfamScan.tar.gz
@@ -147,9 +145,8 @@ TO BE ABLE TO RUN ON NEW GENOMES (which don't exist in Pfam current release):
 
 
 
-========================================================================
 ##Usage
-========================================================================
+
 Before running SIFTER you should performs the one time data setup (STEPs
 1 and 2 below).
 
@@ -237,9 +234,9 @@ STEP 3-Run SIFTER for your query
         python sifter_extract.py -s 9823 ../example/results ../examples/preds.txt
 
 
-========================================================================
+
 ##Run SIFTER a new genome (or set of genes) not already in Pfam database
-========================================================================
+
     If your query genes are not already in the Pfam database, you can not
     use the precomputed families data to build necessary phylogenetic tree
     and evodence files for SIFTER to run.
@@ -272,9 +269,8 @@ STEP 3-Run SIFTER for your query
                python sifter_extract.py -f PF12491,PF13820 --hit_file ../example/pfam_res.txt ../example/results ../examples/preds.txt
         
 
-========================================================================
+
 ##Estimating the running time
-========================================================================
 
     Once you run the 'sifter_prepare.py' script to prepare you query, a 
     file ('running_estimation.csv') will be generated in the output folder
@@ -285,9 +281,9 @@ STEP 3-Run SIFTER for your query
     http://sifter.berkeley.edu/complexity/
     
 
-========================================================================
+
 ##Control on Speed
-========================================================================
+
    You can control the speed of running SIFTER using the -x and -t options
    in the 'sifter_prepare.py' script:
    
@@ -303,15 +299,15 @@ STEP 3-Run SIFTER for your query
                      Smaller value leads to faster runningtime.
    
   
-========================================================================
+
 ##Multi-threading:
-========================================================================
+
 You can run the 'sifter_gather_family_data.py' and 'sifter_run.py' 
 scripts on multi-threads using -n option. (Default is 4)
   
-========================================================================
+
 ##Datasets used:
-========================================================================
+
 Used in Version 1.0:
 	Pfam 27.0 
 	(March 2013, 14831 families)
@@ -332,8 +328,8 @@ Used in Version 1.0:
 	ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz
 	(Updated on March 3rd, 2015)
 
-========================================================================
+
 ##Version History
-========================================================================
+
 5/15/2015	large_scale_v1.0 source code and data released
 
