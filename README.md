@@ -1,6 +1,6 @@
 # SIFTER
-A pipeline for large-scale phylogeny-based protein function prediction using SIFTER 
-(Statistical Inference of Function Through Evolutionary Relationships)
+A pipeline for large-scale phylogeny-based protein function prediction using SIFTER (Statistical Inference of Function Through Evolutionary Relationships)
+
 ========================================================================
 
 SIFTER is a statistical approach to predicting protein function 
@@ -38,7 +38,7 @@ Other previous developers:
 
 
 ========================================================================
-Download Package
+##Download Package
 ========================================================================
 
     mkdir sifter_large_scale
@@ -52,7 +52,7 @@ Download Package
     tar -xzvf lib.tar.gz
 
 ========================================================================
-Scripts:
+##Scripts:
 ========================================================================
 
     sifter_find_families.py             Finds Pfam families for your 
@@ -93,7 +93,7 @@ Scripts:
                                         Pfam and GOA databases.
 
 ========================================================================
-Requirments:
+##Requirments:
 ========================================================================
 1-Install necessary Prerequisite packages:
 
@@ -111,6 +111,7 @@ Requirments:
         sudo pip install sqlite
 
 TO BE ABLE TO RUN ON NEW GENOMES (which don't exist in Pfam current release):
+
 2-Install PfamScan source code and data
     #Documentation at: https://wiki.gacrc.uga.edu/wiki/Pfam_scan
 
@@ -147,7 +148,7 @@ TO BE ABLE TO RUN ON NEW GENOMES (which don't exist in Pfam current release):
 
 
 ========================================================================
-Usage
+##Usage
 ========================================================================
 Before running SIFTER you should performs the one time data setup (STEPs
 1 and 2 below).
@@ -237,7 +238,7 @@ STEP 3-Run SIFTER for your query
 
 
 ========================================================================
-Run SIFTER a new genome (or set of genes) not already in Pfam database
+##Run SIFTER a new genome (or set of genes) not already in Pfam database
 ========================================================================
     If your query genes are not already in the Pfam database, you can not
     use the precomputed families data to build necessary phylogenetic tree
@@ -272,8 +273,9 @@ Run SIFTER a new genome (or set of genes) not already in Pfam database
         
 
 ========================================================================
-Estimating the running time
+##Estimating the running time
 ========================================================================
+
     Once you run the 'sifter_prepare.py' script to prepare you query, a 
     file ('running_estimation.csv') will be generated in the output folder
     that shows the information for individual families the SIFTER will 
@@ -284,7 +286,7 @@ Estimating the running time
     
 
 ========================================================================
-Control on Speed
+##Control on Speed
 ========================================================================
    You can control the speed of running SIFTER using the -x and -t options
    in the 'sifter_prepare.py' script:
@@ -302,13 +304,13 @@ Control on Speed
    
   
 ========================================================================
-Multi-threading:
+##Multi-threading:
 ========================================================================
 You can run the 'sifter_gather_family_data.py' and 'sifter_run.py' 
 scripts on multi-threads using -n option. (Default is 4)
   
 ========================================================================
-Datasets used:
+##Datasets used:
 ========================================================================
 Used in Version 1.0:
 	Pfam 27.0 
@@ -331,7 +333,7 @@ Used in Version 1.0:
 	(Updated on March 3rd, 2015)
 
 ========================================================================
-Version History
+##Version History
 ========================================================================
 5/15/2015	large_scale_v1.0 source code and data released
 
