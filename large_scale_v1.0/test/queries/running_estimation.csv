@@ -1,0 +1,5 @@
+Family,number of candidate functions,Family size,Truncation level,Estimated running time,95%% confidence upper bound,99.9%% confidence upper bound
+PF12491,5,81,5,1.0 minutes,8.3 minutes,11.0 minutes
+PF06448,15,170,2,1.0 minutes,8.3 minutes,11.0 minutes
+PF09172,22,578,2,7.2 minutes,67.3 minutes,72.8 minutes
+PF01347,27,1005,2,26.7 minutes,62.3 minutes,92.3 minutes

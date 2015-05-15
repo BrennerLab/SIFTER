@@ -1,0 +1,9 @@
+Protein: C0JYY2_HUMAN
+Domain: C0JYY2_HUMAN/4494-4551	PF12491
+Predictions:	GO ID		Term name	Confidence Score
+		GO:0005543	phospholipid binding	0.95
+		GO:0050750	low-density lipoprotein particle receptor binding	0.68
+		GO:0035473	lipase binding	0.68
+		GO:0008201	heparin binding	0.40
+		GO:0017127	cholesterol transporter activity	0.40
+
