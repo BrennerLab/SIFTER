@@ -498,10 +498,7 @@ def add_pplaced(pfam_id):
             print "All %s domains for family %s have already been pplaced."%(len(Already_placed),pfam_id)
             return
 
-
-        hmm_build(hmmbuild_executable_loc=path_to_hmmbuild,
-              sequence_file='%s/%s.sth'%(alignment_folder,pfam_id),
-              output_file='%s/%s.hmm'%(pplacer_folder,pfam_id))
+		
 
         rand_id_1=random.randint(1000000,9999999)        
         rand_id_2=random.randint(1000000,9999999)        
@@ -510,6 +507,14 @@ def add_pplaced(pfam_id):
         subprocess.check_call("gunzip -c %s/%s.log.gz > %s/%s.log.%d"%(tree_folder,pfam_id,tree_folder,pfam_id,rand_id_1),shell=True)
         subprocess.check_call("gunzip -c %s/%s.nw.gz > %s/%s.nw.%d"%(tree_folder,pfam_id,tree_folder,pfam_id,rand_id_2),shell=True)
         subprocess.check_call("gunzip -c %s/%s.fasta.gz > %s/%s.fasta.%d"%(alignment_folder,pfam_id,alignment_folder,pfam_id,rand_id_3),shell=True)
+
+        AlignIO.convert("%s/%s.fasta.%d"%(alignment_folder,pfam_id,rand_id_3),"fasta","%s/%s.sth.%d"%(alignment_folder,pfam_id,rand_id_3),"stockholm")
+
+        hmm_build(hmmbuild_executable_loc=path_to_hmmbuild,
+              sequence_file='%s/%s.sth.%d'%(alignment_folder,pfam_id,rand_id_3),
+              output_file='%s/%s.hmm'%(pplacer_folder,pfam_id))
+
+
         taxit_create(taxit_executable_loc=path_to_taxit,
             aln_fasta='%s/%s.fasta.%d'%(alignment_folder,pfam_id,rand_id_3),
             hmm_file='%s/%s.hmm'%(pplacer_folder,pfam_id),
@@ -527,6 +532,8 @@ def add_pplaced(pfam_id):
             subprocess.check_call("rm  %s/%s.nw.%d"%(tree_folder,pfam_id,rand_id_2),shell=True)
         if os.path.exists("%s/%s.fasta.%d"%(alignment_folder,pfam_id,rand_id_3)):
             subprocess.check_call("rm  %s/%s.fasta.%d"%(alignment_folder,pfam_id,rand_id_3),shell=True)
+        if os.path.exists("%s/%s.sth.%d"%(alignment_folder,pfam_id,rand_id_3)):
+            subprocess.check_call("rm  %s/%s.sth.%d"%(alignment_folder,pfam_id,rand_id_3),shell=True)
 
         output_prefix = '%s/%s_pplaced'%(pplacer_folder,pfam_id)
         updated_aln = output_prefix + '.sto'
