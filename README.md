@@ -80,15 +80,13 @@ Other previous developers:
                                         families. (using the outputs of 
                                         'sifter_run.py'.)
 
-    sifter_build_sql_database.py        Gathers necessary 'alignment', 
-                                        'tree', and 'evidence' files 
-                                        needed to run SIFTER for each 
-                                        query family.
+    sifter_build_sql_database.py        build the MySQL database that is
+										needed to run all other scripts.
                                         [NOTE: Only use this script if 
                                         you don't wish to use the 
                                         precomputed SQL database built 
                                         based on latest releases of 
-                                        Pfam and GOA databases.
+                                        Pfam and GOA databases.]
 
 
 ##Requirments:

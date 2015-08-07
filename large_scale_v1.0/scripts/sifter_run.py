@@ -58,6 +58,10 @@ def usage():
     print "                                 want to run SIFTER on."
     print "                                 If not provided, SIFTER will run on"
     print "                                 all families in queries_prep_folder"
+    print "           -t          INT       Number of functions to truncate" 
+    print "                                 to in approximation [Default:"
+    print "                                 Automatically computed in sifter_prepare.py]"
+    print "                                 Smaller value leads to faster running time."
     print "           -h                    Help. Print Usage."
 
 
@@ -147,7 +151,11 @@ class ProcessingThread(threading.Thread):
                 write_goa_anns_to_pli_constrained("%s.%d"%(evidence_file,rand_id_2),anns, p, seq_lookup,evidence_constraints)
             pfam_id = query_data['pfam_id']
             n_terms=query_data['n_terms']
-            max_simul_fcns=query_data['e_time'][0]
+            if query_data['enforced_trunc']>0:
+                max_simul_fcns=query_data['enforced_trunc']
+            else:
+                max_simul_fcns=query_data['e_time'][0]
+                
             print "n_terms :",n_terms
             print "truncation level :",max_simul_fcns
             print "Estimated running time for family %s = %s (95%% confidence upper bound = %s)"%(pfam_id,query_data['e_time'][4],query_data['e_time'][5])            
@@ -271,7 +279,7 @@ if __name__=="__main__":
     
     # Initialization
     main_dir=os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-    sifter_java=os.path.dirname(main_dir)+'/core/sifter2.1.jar'
+    sifter_java=os.path.dirname(main_dir)+'/core/sifter2.1.1.jar'
     if not os.path.exists(sifter_java):
         print "\nERROR: No SIFTER jar file exists at %s\n"%sifter_java
         sys.exit()
@@ -282,7 +290,9 @@ if __name__=="__main__":
     
     exclude_fams=[]
     only_fams=[]
-    opts, args = getopt.getopt(sys.argv[1:], "hn:e:f:",['ie=','if=']) 
+    opts, args = getopt.getopt(sys.argv[1:], "hn:e:f:t:",['ie=','if=']) 
+    truncation_level=0
+    
     if len(args) != 2:
         usage()
         sys.exit()
@@ -314,6 +324,8 @@ if __name__=="__main__":
                 a=f.read()
                 splited =re.split(' |,|;|\n',a.strip())
                 only_fams.extend(list(set([w for w in splited if w])))                
+            elif o == "-t":
+                truncation_level=int(a)
             else:
                 usage()
                 sys.exit()
@@ -342,6 +354,7 @@ if __name__=="__main__":
         if  not(os.path.isfile(output_prefix + "_result.pickle")):
             query_data = pickle.load(open(qfile, "rb" ))
             query_data['output_to'] = output_prefix
+            query_data['enforced_trunc']=truncation_level            
             queries_to_process.append((copy.deepcopy(query_data), output_prefix,pfam_id))
         else:
             print "Predictions have already been made for %s"%pfam_id
