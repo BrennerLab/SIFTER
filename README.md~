@@ -154,7 +154,6 @@ NOTE: To run the scripts first change directory to the scripts folder
 
 
 STEP 1-Build SIFTER MySQL databases:
-
     To Run the Python scripts in this package you need to have a MySQL 
     database that encompasses the necessary information into the tables 
     (The .gz file is ~34GB).
@@ -176,7 +175,6 @@ STEP 1-Build SIFTER MySQL databases:
     
 
 STEP 2- Obtain family data
-
     To run SIFTER you need to prepare necessary tree and evidence files.
     We have prepared necessary data files based on latest releases of 
     Pfam and Gene Ontology Annotation databases. You can download those 
@@ -213,7 +211,6 @@ STEP 2- Obtain family data
 
 
 STEP 3-Run SIFTER for your query
-
     Given that the mysql (step 1) and family data (step 2) are ready, you can
     start running SIFTER on you queries.
 
