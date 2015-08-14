@@ -202,7 +202,7 @@ STEP 2- Obtain family data
         python sifter_find_families.py -A ../examples/family_list.txt
         python sifter_gather_family_data.py -i ../example/family_list.txt ../example/fam_data
         
-    -If you already have the precomputed damily data and you want to keep 
+    -If you already have the precomputed family data and you want to keep 
     the alignments and trees data (since Pfam database does not change 
     so fast), but update the evidence annotations to most recent version,
     you may use the following:
@@ -310,6 +310,7 @@ scripts on multi-threads using -n option. (Default is 4)
 ##Datasets used:
 
 Used in Version 1.0:
+
 	Pfam 27.0 
 	(March 2013, 14831 families)
 
